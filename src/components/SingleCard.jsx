@@ -1,0 +1,51 @@
+import { useParams } from "react-router";
+import axios from "axios";
+import { Link } from "react-router-dom";
+import { useEffect } from "react";
+import styles from "../styles/SingleCard.module.css";
+import { useSelector, useDispatch } from "react-redux";
+import { singleMovie } from "../store/movies";
+import { getMovies } from "../store/movies";
+
+export default function detailMovie() {
+  const dispatch = useDispatch();
+  const singleCard = useSelector((state) => state.singleMovies);
+
+  const urlImage = "https://image.tmdb.org/t/p/w300";
+
+  const data = useParams();
+  console.log("USE PARAMS SINGLECARD", useParams())
+
+  useEffect(() => {
+    dispatch(singleMovie(data));
+  }, [data.id]);
+
+  return (
+    <div
+      style={{
+        backgroundImage: `url(https://image.tmdb.org/t/p/original${singleCard.backdrop_path}`,
+      }}
+      className={styles.background}
+    >
+      <div className={styles.movieheader}>
+        <img className={styles.image} src={urlImage + singleCard.poster_path} />
+        <h1>{singleCard.title}</h1>
+        <h4>{singleCard.release_date}</h4>
+        <span className={styles.minutes}>{singleCard.runtime} min.</span>
+        <p className={styles.type}>
+          {singleCard.genres?.map((genre) => genre.name + " | ")}
+        </p>
+      </div>
+      <div className={styles.movie_desc}>
+        <p className={styles.text}>{singleCard.overview}</p>
+      </div>
+      {/* <div className="movie_social">
+      <ul>
+        <li><i class="material-icons">share</i></li>
+        <li><i class="material-icons"></i></li>
+        <li><i class="material-icons">chat_bubble</i></li>
+      </ul>
+    </div> */}
+    </div>
+  );
+}
