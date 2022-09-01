@@ -1,5 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+import { deleteSearch } from "../store/search";
 import {
   AiOutlineUser,
   AiOutlineSearch,
@@ -17,6 +19,13 @@ import Search from "./Search";
 export default function () {
   const [nav, setNav] = useState(false);
 
+  const dispatch = useDispatch();
+  const search = useSelector((state) => state.search);
+
+  const searchClean = () =>{
+    dispatch(deleteSearch())
+  }
+
   return (
     <header className={styles.navbar}>
       <img src={Logo} alt="Logo" height={"55px"} />
@@ -27,7 +36,7 @@ export default function () {
           }
         >
           <Search/>
-          <Link to="/movies">
+          <Link to="/movies" >
             <li>Peliculas</li>
           </Link>
           <Link to="/shows">
@@ -56,28 +65,3 @@ export default function () {
     </header>
   );
 }
-
-// <div className={styles.container}>
-//   <div className={styles.navbar}>
-//     <ul>
-//     <Link to="/">
-//       <li>Light's Out!</li>
-//       </Link>
-//       <Link to="/movies">
-//       <li>Peliculas</li>
-//       </Link>
-//       <Link to="/shows">
-//       <li>Shows</li>
-//       </Link>
-//       <Link to="/favourites">
-//         <li>Favoritos</li>
-//       </Link>
-//       <Link to="/user/login">
-//       <li>Login</li>
-//       </Link>
-//       <Link to="/user/register">
-//       <li>Register</li>
-//       </Link>
-//     </ul>
-//   </div>
-// </div>
