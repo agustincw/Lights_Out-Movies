@@ -29,9 +29,9 @@ export default function detailMovie() {
     >
       <div className={styles.movieheader}>
         <img className={styles.image} src={urlImage + singleCard.poster_path} />
-        <h1>{singleCard.title}</h1>
-        <h4>{singleCard.release_date}</h4>
-        <span className={styles.minutes}>{singleCard.runtime} min.</span>
+        <h1>{singleCard.title ? singleCard.title : singleCard.name}</h1>
+        <h4>{singleCard.release_date ? singleCard.release_date : singleCard.first_air_date}</h4>
+        <span className={styles.minutes}>{singleCard.runtime ? `${singleCard.runtime} min` : `${singleCard.number_of_seasons} seasons`}</span>
         <p className={styles.type}>
           {singleCard.genres?.map((genre) => genre.name + " | ")}
         </p>
