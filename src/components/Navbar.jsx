@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { deleteSearch } from "../store/search";
 import {
@@ -8,23 +8,20 @@ import {
   AiOutlineMenu,
   AiOutlineClose,
 } from "react-icons/ai";
-// import axios from "axios";
-// import { useNavigate } from "react-router-dom";
-// import { SearchContext } from "../contexts/searchContext";
-// import { LoginContext } from "../contexts/loginContext";
 import styles from "../styles/Navbar.module.css";
-import Logo from "../assets/Logo.png"
+import Logo from "../assets/Logo.png";
 import Search from "./Search";
 
 export default function () {
   const [nav, setNav] = useState(false);
+  const navigate = useNavigate;
 
   const dispatch = useDispatch();
   const search = useSelector((state) => state.search);
 
-  const searchClean = () =>{
-    dispatch(deleteSearch())
-  }
+  const searchClean = () => {
+    dispatch(deleteSearch());
+  };
 
   return (
     <header className={styles.navbar}>
@@ -35,23 +32,23 @@ export default function () {
             nav ? [styles.menu, styles.active].join(" ") : [styles.menu]
           }
         >
-          <Search/>
-          <Link to="/movies" >
-            <li>Peliculas</li>
-          </Link>
-          <Link to="/shows">
-            <li>Shows</li>
-          </Link>
-          <Link to="/favourites">
-            <li>Favoritos</li>
-          </Link>
-          <Link to="/user/login">
-            <li>Login</li>
-          </Link>
-          <Link to="/user/register">
-            <li>Register</li>
-          </Link>
-          {/* <li>
+          <Search />
+            <Link to="/movies">
+              <li onClick={searchClean}>Peliculas</li>
+            </Link>
+            <Link to="/shows">
+              <li onClick={searchClean}>Shows</li>
+            </Link>
+            <Link to="/favourites">
+              <li onClick={searchClean}>Favoritos</li>
+            </Link>
+            <Link to="/user/login">
+              <li>Login</li>
+            </Link>
+            <Link to="/user/register">
+              <li>Register</li>
+            </Link>
+            {/* <li>
             <AiOutlineSearch size={25} style={{ marginTop: "6px" }} />
           </li>
           <li>
