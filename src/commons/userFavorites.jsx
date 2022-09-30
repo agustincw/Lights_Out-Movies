@@ -9,7 +9,7 @@ import { getMovies } from "../store/movies";
 import { addFavorite } from "../store/favoritesActions";
 import { favoritesAll } from "../store/favoritesAll";
 
-export default function detailMovie() {
+export default function favoritesDisplay() {
   const dispatch = useDispatch();
   const singleCard = useSelector((state) => state.singleMovies);
   const addToFavorite = useSelector((state) => state.add)
@@ -23,14 +23,6 @@ export default function detailMovie() {
   useEffect(() => {
     dispatch(singleMovie(data));
   }, [data.id]);
-
-  const addNewFavorite = () =>{
-    dispatch(addFavorite(data))
-  }
-
-  useEffect(() => {
-    dispatch(favoritesAll(data))
-}, [addNewFavorite])
 
   return (
     <div
