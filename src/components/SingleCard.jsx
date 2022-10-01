@@ -12,7 +12,9 @@ import { favoritesAll } from "../store/favoritesAll";
 export default function detailMovie() {
   const dispatch = useDispatch();
   const singleCard = useSelector((state) => state.singleMovies);
-  const addToFavorite = useSelector((state) => state.add)
+  const favoriteAction = useSelector((state) => state.favoritesActions)
+  const favoritesDisplay = useSelector((state) => state.favoritesAll)
+
   // const user = useSelector((state) => state.)
 
   const urlImage = "https://image.tmdb.org/t/p/w300";
@@ -29,6 +31,7 @@ export default function detailMovie() {
   }
 
   useEffect(() => {
+    console.log("data  en useEffect en SCARD", data)
     dispatch(favoritesAll(data))
 }, [addNewFavorite])
 

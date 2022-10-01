@@ -19,8 +19,6 @@ const {type} = useParams()
     dispatch(getMovies(type));
   }, [type]); // cuando cambie el type, se vuelve a ejecutar el useEffect
 
-
-  
 const searchClean = () =>{
   dispatch(deleteSearch())
 }

@@ -3,10 +3,13 @@ import { createReducer, createAsyncThunk } from "@reduxjs/toolkit";
 
 export const addFavorite = createAsyncThunk("ADD_FAVORITE", async (data, thunkAPI) => {
   try {
+    console.log("AGREGAR FAVORITO", data)
     const favorite = await axios.post(`/api/favourites/${data.id}/add`, {
-      movie: data.movies.title ? data.movies.title : data.movies.name,
+     movieId: data.id,
+     title: data.title,
+     image: data.poster_path
     });
-    return favorite
+    return favorite.data
   } catch (error) {
     console.log(error);
   }

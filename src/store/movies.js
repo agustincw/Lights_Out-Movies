@@ -14,7 +14,6 @@ export const singleMovie = createAsyncThunk(
   "SET_SINGLE_MOVIE",
   async (data) => {
     try {
-      console.log("DATAAA", data);
       const { type, id } = data;
       const detailMovie = await axios.get(`/api/${type}/${id}`);
       console.log("DETAIL MOVIE STORE", detailMovie);

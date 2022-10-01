@@ -5,12 +5,7 @@ import MoviesGrid from "./commons/MoviesGrid"
 import SingleCard from "./components/SingleCard"
 import Register from "./components/Register";
 import Login from "./components/Login"
-import userFavorites from "./commons/userFavorites"
-// import Grid from "./commons/Grid";
-// import SingleCard from "./components/singleCard";
-// import Register from "./components/register";
-// import Login from "./components/login";
-// import Search from "./components/search";
+import UserFavorites from "./commons/UserFavorites"
 
 const App = () => {
   return (
@@ -21,7 +16,7 @@ const App = () => {
           <Route path="/:type/:id" element={<SingleCard />} />
           <Route path="/user/register" element={<Register />} />
           <Route path="/user/login" element={<Login />} />
-          <Route path="/favourites/:id/all" element={<userFavorites />} />
+          <Route path="/favourites/:id/all" element={<UserFavorites />} />
         </Routes>
     </>
   );
