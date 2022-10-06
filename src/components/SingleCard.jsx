@@ -16,6 +16,8 @@ export default function detailMovie() {
   const favoritesDisplay = useSelector((state) => state.favoritesAll)
 
   // const user = useSelector((state) => state.)
+const {id, title, name, poster_path, overview } = singleCard
+ const info = { id: "17", movie: {id, title, name, poster_path, overview} }
 
   const urlImage = "https://image.tmdb.org/t/p/w300";
 
@@ -27,13 +29,13 @@ export default function detailMovie() {
   }, [data.id]);
 
   const addNewFavorite = () =>{
-    dispatch(addFavorite(data))
+    dispatch(addFavorite(info))
   }
 
-  useEffect(() => {
-    console.log("data  en useEffect en SCARD", data)
-    dispatch(favoritesAll(data))
-}, [addNewFavorite])
+//   useEffect(() => {
+//     // console.log("data  en useEffect en SCARD", data)
+//     dispatch(favoritesAll(info))
+// }, [])
 
   return (
     <div

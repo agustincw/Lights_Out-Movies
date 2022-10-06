@@ -39,7 +39,7 @@ export default function () {
             <Link to="/shows">
               <li onClick={searchClean}>Shows</li>
             </Link>
-            <Link to="/favourites">
+            <Link to="/favourites/all">
               <li onClick={searchClean}>Favoritos</li>
             </Link>
             <Link to="/user/login">

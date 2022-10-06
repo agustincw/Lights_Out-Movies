@@ -16,7 +16,7 @@ const App = () => {
           <Route path="/:type/:id" element={<SingleCard />} />
           <Route path="/user/register" element={<Register />} />
           <Route path="/user/login" element={<Login />} />
-          <Route path="/favourites/:id/all" element={<UserFavorites />} />
+          <Route path="/favourites/all" element={<UserFavorites />} />
         </Routes>
     </>
   );

@@ -6,21 +6,26 @@ import moviesGrid from "./MoviesGrid";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { favoritesAll } from "../store/favoritesAll";
+import MoviesCard from "./MoviesCard";
 
 export default function favoritesDisplay() {
   const navigate = useNavigate()
   const dispatch = useDispatch();
-  const favorites = useSelector((state) => state.favorites);
+  const favorites = useSelector((state) => state.favoritesAll);
 
   const urlImage = "https://image.tmdb.org/t/p/w300";
 
   useEffect(() => {
-    dispatch(favoritesAll(data));
-  }, [data.id]);
+    dispatch(favoritesAll());
+  }, []);
 
   return (
-    <div>
-      <moviesGrid type={favorites}/>
+<div>
+      <ul >
+        {favorites.map((movie, i) => (
+          <MoviesCard key={i} movie={movie} />
+        ))};
+      </ul>
     </div>
   );
 }
